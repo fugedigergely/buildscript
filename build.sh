@@ -74,11 +74,19 @@ then
 make clean
 fi
 
+# Get start time
+res1=$(date +%s.%N)
+
 echo -e "${cya}Building ${bldcya}CyanogenMod 12 ${cya}$EXTRAS for $DEVICE ${txtrst}";
+echo -e "${bldgrn}Start time: $(date) ${txtrst}"
 if [ "$EXTRAS" == "kernel" ]; then
         mka -j3 bootimage
 fi
 if [ "$EXTRAS" == "rom" ]; then
         brunch $DEVICE
 fi
+
+# Get elapsed time
+res2=$(date +%s.%N)
+echo -e "${bldgrn}Total time elapsed: ${txtrst}${grn}$(echo "($res2 - $res1) / 60"|bc ) minutes ($(echo "$res2 - $res1"|bc ) seconds)${txtrst}"
 
