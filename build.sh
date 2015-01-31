@@ -61,7 +61,10 @@ chmod a+x updates.sh
 ./updates.sh
 fi
 
+echo -e "${bldblu}Setting up the build environment ${txtrst}";
 source build/envsetup.sh
+
+echo -e "${bldblu}Lunching $DEVICE ${txtrst}";
 breakfast $DEVICE
 clear
 
