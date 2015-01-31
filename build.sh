@@ -40,11 +40,18 @@ export CCACHE_DIR=~/ccache
 prebuilts/misc/linux-x86/ccache/ccache -M 50G
 export OUT_DIR_COMMON_BASE=~/out
 cd ~/android/system
+clear
+
+read -p "${bldgrn}Do you want to sync the latest changes ${txtrst}? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
 curl https://raw.githubusercontent.com/LegacyXperia/local_manifests/cm-12.0/semc.xml > ~/android/system/.repo/local_manifests/semc.xml
 repo sync -j32
 curl https://raw.githubusercontent.com/LegacyXperia/local_manifests/cm-12.0/updates.sh > ~/android/system/updates.sh
 chmod a+x updates.sh
 ./updates.sh
+fi
+
 source build/envsetup.sh
 breakfast $DEVICE
 clear
