@@ -34,12 +34,21 @@ bldblu=${txtbld}$(tput setaf 4) #  blue
 bldcya=${txtbld}$(tput setaf 6) #  cyan
 txtrst=$(tput sgr0)             # Reset
 
+cd ~/android/system
+
+echo -e "${bldblu}Adding ~/bin to path just in case if it's not there ${txtrst}";
 export PATH="$HOME/bin:$PATH"
+
+echo -e "${bldblu}Enabling ccache ${txtrst}";
 export USE_CCACHE=1
+
+echo -e "${bldblu}Setting ccache dir to ~/ccache ${txtrst}";
+mkdir -p ~/ccache
 export CCACHE_DIR=~/ccache
 prebuilts/misc/linux-x86/ccache/ccache -M 50G
+
+echo -e "${bldblu}Setting output dir to ~/out ${txtrst}";
 export OUT_DIR_COMMON_BASE=~/out
-cd ~/android/system
 clear
 
 read -p "${bldgrn}Do you want to sync the latest changes? ${txtrst}? " -n 1 -r
