@@ -36,6 +36,9 @@ txtrst=$(tput sgr0)             # Reset
 
 cd ~/android/system
 
+#Use Prebuilt Chromium
+export USE_PREBUILT_CHROMIUM=1
+
 echo -e "${bldblu}Adding ~/bin to path just in case if it's not there ${txtrst}";
 export PATH="$HOME/bin:$PATH"
 
