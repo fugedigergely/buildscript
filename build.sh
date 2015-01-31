@@ -34,6 +34,14 @@ bldblu=${txtbld}$(tput setaf 4) #  blue
 bldcya=${txtbld}$(tput setaf 6) #  cyan
 txtrst=$(tput sgr0)             # Reset
 
+# If there is more than one jdk installed, use latest 7.x
+if [ "`update-alternatives --list javac | wc -l`" -gt 1 ]; then
+        JDK7=$(dirname `update-alternatives --list javac | grep "\-7\-"` | tail -n1)
+        JRE7=$(dirname ${JDK7}/../jre/bin/java)
+        export PATH=${JDK7}:${JRE7}:$PATH
+fi
+JVER=$(javac -version  2>&1 | head -n1 | cut -f2 -d' ')
+
 cd ~/android/system
 
 #Use Prebuilt Chromium
