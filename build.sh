@@ -42,7 +42,7 @@ export OUT_DIR_COMMON_BASE=~/out
 cd ~/android/system
 clear
 
-read -p "${bldgrn}Do you want to sync the latest changes ${txtrst}? " -n 1 -r
+read -p "${bldgrn}Do you want to sync the latest changes? ${txtrst}? " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 curl https://raw.githubusercontent.com/LegacyXperia/local_manifests/cm-12.0/semc.xml > ~/android/system/.repo/local_manifests/semc.xml
@@ -55,6 +55,12 @@ fi
 source build/envsetup.sh
 breakfast $DEVICE
 clear
+
+read -p "${bldgrn}Do you want to clean the out folder? ${txtrst}? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+make clean
+fi
 
 echo -e "${cya}Building ${bldcya}CyanogenMod 12 ${cya}$EXTRAS for $DEVICE ${txtrst}";
 if [ "$EXTRAS" == "kernel" ]; then
