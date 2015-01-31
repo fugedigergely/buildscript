@@ -63,7 +63,7 @@ export OUT_DIR_COMMON_BASE=~/out
 clear
 
 read -p "${bldgrn}Do you want to sync the latest changes? ${txtrst}? " -n 1 -r
-echo
+clear
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 clear
@@ -83,7 +83,7 @@ breakfast $DEVICE
 clear
 
 read -p "${bldgrn}Do you want to clean the out folder? ${txtrst}? " -n 1 -r
-echo
+clear
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 clear
