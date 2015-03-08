@@ -70,8 +70,7 @@ clear
 echo -e "${bldblu}Syncing ${txtrst}";
 curl https://raw.githubusercontent.com/LegacyXperia/local_manifests/cm-12.0/semc.xml > ~/android/system/.repo/local_manifests/semc.xml
 repo sync -j32
-curl https://raw.githubusercontent.com/LegacyXperia/local_manifests/cm-12.0/updates.sh > ~/android/system/updates.sh
-chmod a+x updates.sh
+ln -s vendor/extra/updates.sh updates.sh
 ./updates.sh
 fi
 
